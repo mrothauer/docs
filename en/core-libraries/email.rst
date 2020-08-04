@@ -626,7 +626,7 @@ registers. We want to check that the subject and body contain the user's name::
 
         $this->assertMailSentTo($user->email);
         $this->assertMailContainsText('Hi ' . $user->name);
-        $this->assertMailContainsText('Welcome to CakePHP!');
+        $this->assertMailSubjectContains('Welcome to CakePHP!');
     }
 
 Assertion methods
@@ -676,8 +676,11 @@ The ``Cake\TestSuite\EmailTrait`` trait provides the following assertions::
     // Asserts an email contains an attachment
     $this->assertMailContainsAttachment('test.png');
 
-    // Asserts an email at a specific index contains the expected value within an Message getter (e.g., "subject")
+    // Asserts an email at a specific index contains the expected value within an Message getter (e.g., "cc")
     $this->assertMailSentWithAt($at, $expected, $parameter);
+
+    // Asserts an email subject contains exptected text contents
+    $this->assertMailSubjectContains($subject);
 
 .. meta::
     :title lang=en: Email
